@@ -35,4 +35,5 @@ int main()
     else{
         cout<<"Element "<<ele<<" found at index "<<result<<endl;
     }
+return 0;
 }
