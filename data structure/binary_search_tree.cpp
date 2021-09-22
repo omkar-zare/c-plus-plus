@@ -1,121 +1,85 @@
 #include<iostream>
 
-struct node{
+struct node {
     int val;
     node* left;
     node* right;
 };
 node* root;
 
-struct Queue{
+struct Queue {
     node* t[100];
     int front;
     int rear;
 };
 Queue queue;
 
-void enqueue(node* n)
-{
+void enqueue(node* n) {
     queue.t[queue.rear++]=n;
 }
-node* dequeue()
-{
+node* dequeue() {
     return (queue.t[queue.front++]);
 }
 
-void insert(node *n,int x)
-{
-    if(x<n->val)
-    {
-         if (n->left == NULL)
-        {
+void insert(node *n,int x) {
+    if(x<n->val) {
+        if (n->left == NULL) {
             node *temp = new node;
             temp->val = x;
             temp->left = NULL;
             temp->right = NULL;
             n->left = temp;
-        }
-        else
-        {
+        } else {
             insert(n->left, x);
         }
-    }
-    else if(x>n->val)
-    {
-        if (n->right == NULL)
-        {
+    } else if(x>n->val) {
+        if (n->right == NULL) {
             node *temp = new node;
             temp->val = x;
             temp->left = NULL;
             temp->right = NULL;
             n->right = temp;
-        }
-        else
-        {
+        } else {
             insert(n->right, x);
         }
     }
 }
 
-int findMaxInLeftST(node* n)
-{
-    while(n->right!=NULL)
-    {
+int findMaxInLeftST(node* n) {
+    while(n->right!=NULL) {
         n=n->right;
     }
     return n->val;
 }
-void remove(node* p,node* n,int x)
-{
-    if(n->val==x)
-    {
-        if(n->left==NULL&&n->right==NULL)
-        {
-            if(x<p->val)
-            {
+void remove(node* p,node* n,int x) {
+    if(n->val==x) {
+        if(n->left==NULL&&n->right==NULL) {
+            if(x<p->val) {
                 p->right=NULL;
-            }
-            else
-            {
+            } else {
                 p->left=NULL;
             }
-        }
-        else if(n->right==NULL)
-        {
-            if(x<p->val)
-            {
+        } else if(n->right==NULL) {
+            if(x<p->val) {
                 p->right=n->left;
-            }
-            else
-            {
+            } else {
                 p->left=n->left;
             }
 
-        }
-        else if(n->left==NULL)
-        {
-            if(x<p->val)
-            {
+        } else if(n->left==NULL) {
+            if(x<p->val) {
                 p->right=n->right;
-            }
-            else
-            {
+            } else {
                 p->left=n->right;
             }
-        }
-        else
-        {
+        } else {
             int y=findMaxInLeftST(n->left);
             n->val=y;
             remove(n,n->left,x);
         }
-    }
-    else if(n->val>x)
-    {
+    } else if(n->val>x) {
         remove(n,n->right,x);
-    }
-    else
-    {
+    } else {
         remove(n,n->right,x);
     }
 }
@@ -153,8 +117,7 @@ void Post(node *n) {
     }
 }
 
-int main()
-{
+int main() {
     queue.front=0;
     queue.rear=0;
     int value;
@@ -165,8 +128,7 @@ int main()
     root->val=value;
     root->left=NULL;
     root->right=NULL;
-    do
-    {
+    do {
         std::cout<<"\n1.Insert"
                  <<"\n2.Delete"
                  <<"\n3.Breadth First Traverse"
@@ -177,8 +139,7 @@ int main()
                  <<"\nEnter the Choice: ";
         std::cin>>ch;
 
-        switch(ch)
-        {
+        switch(ch) {
         case 1:
             int x;
             std::cout<<"\nEnter the value to Insert:";
@@ -212,6 +173,6 @@ int main()
         default:
             std::cout<<"\nInvalid Choice!!";
         }
-    }while(ch!=7);
+    } while(ch!=7);
     return 0;
 }
