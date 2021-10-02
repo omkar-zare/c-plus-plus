@@ -34,6 +34,6 @@ int main() {
   if (l != -1) {
     cout << key << "'s Last occurence is at position: " << l << endl;
   } else {
-    cout << key << "no occrence found!!" << endl;
+    cout << key << "no occurence found!!" << endl;
   }
 }
