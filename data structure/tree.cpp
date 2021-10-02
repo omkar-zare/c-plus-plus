@@ -9,7 +9,7 @@ struct node {
 
 void createTree(node *curr, node *n, int x, char p) {
   if (n != NULL) {
-    char ch;
+    char ch = 0;
     std::cout << "\nl(left) or r(right) of " << n->val << " :";
     std::cin >> ch;
     if (ch == 'l') {
@@ -27,7 +27,7 @@ void createTree(node *curr, node *n, int x, char p) {
     } else if (p == 'r') {
       curr->right = n1;
     }
-    std::cout << "\nInserted!";
+    std::cout << "\ninserted!";
   }
 }
 
@@ -48,32 +48,33 @@ void BFT(node *n) {
   }
 }
 
-void Pre(node *n) {
+void pre(node *n) {
   if (n != NULL) {
     std::cout << n->val << " ";
-    Pre(n->left);
-    Pre(n->right);
+    pre(n->left);
+    pre(n->right);
   }
 }
 
 void in(node *n) {
   if (n != NULL) {
-    Pre(n->left);
+    pre(n->left);
     std::cout << n->val << " ";
-    Pre(n->right);
+    pre(n->right);
   }
 }
 
-void Post(node *n) {
+void post(node *n) {
   if (n != NULL) {
-    Pre(n->left);
-    Pre(n->right);
+    pre(n->left);
+    pre(n->right);
     std::cout << n->val << " ";
   }
 }
+
 int main() {
-  int value;
-  int ch;
+  int value = 0;
+  int ch = 0;
   std::cout << "Enter the Root node Value: ";
   std::cin >> value;
   node *root = new node();
@@ -81,19 +82,19 @@ int main() {
   root->left = NULL;
   root->right = NULL;
   do {
-    std::cout << "\n1.Insert"
+    std::cout << "\n1.insert"
               << "\n2.Breadth First Traverse"
-              << "\n3.Pre-Order"
-              << "\n4.In-Order"
-              << "\n5.Post-Order"
-              << "\n6.Exit"
+              << "\n3.pre-Order"
+              << "\n4.in-Order"
+              << "\n5.post-Order"
+              << "\n0.Exit"
               << "\nEnter the Choice: ";
     std::cin >> ch;
 
     switch (ch) {
     case 1:
-      int x;
-      char p;
+      int x = 0;
+      char p = 0;
       std::cout << "\nEnter the value:";
       std::cin >> x;
       std::cout << "\nl(left) or r(right) of the root:";
@@ -109,22 +110,22 @@ int main() {
       BFT(root);
       break;
     case 3:
-      std::cout << "\n Pre-Order Traversal:";
-      Pre(root);
+      std::cout << "\n pre-Order Traversal:";
+      pre(root);
       break;
     case 4:
-      std::cout << "\n In-Order Traversal:";
+      std::cout << "\n in-Order Traversal:";
       in(root);
       break;
     case 5:
-      std::cout << "\n Post-Order Traversal:";
-      Post(root);
+      std::cout << "\n post-Order Traversal:";
+      post(root);
       break;
-    case 6:
+    case 0:
       exit(0);
     default:
-      std::cout << "\nInvalid Choice!!";
+      std::cout << "\ninvalid Choice!!";
     }
-  } while (ch != 6);
+  } while (ch != 0);
   return 0;
 }
