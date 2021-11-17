@@ -57,7 +57,7 @@ bool nQueen(int** arr,int x,int n){
 
 int main(){
 
-    int n;  //n Queens
+    int n;  //array size
     cin>>n;
 
     int** arr=new int*[n];   //2d array
