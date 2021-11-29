@@ -82,5 +82,5 @@ int main()
     exit(0);
 }
 // to run 
-// ~/Desktop/os/3$ gcc test.c -o p1 -lpthread
+// ~/Desktop/os/3$ gcc prac4.c -o p1 -lpthread
 // ~/Desktop/os/3$ ./p1
