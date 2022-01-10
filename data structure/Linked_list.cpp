@@ -1,13 +1,15 @@
 #include <bits/stdc++.h>
 #include <iostream>
 
-struct node {
+struct node
+{
   int val;
   node *next;
 };
 node *head;
 
-void Insert() {
+void Insert()
+{
   int ch;
   int c;
   node *n = new node();
@@ -20,13 +22,17 @@ void Insert() {
   std::cout << "\n3.Insert At End.";
   std::cout << "\nEnter the choice: ";
   std::cin >> ch;
-  switch (ch) {
+  switch (ch)
+  {
   case 1:
     n->val = e;
     n->next = NULL;
-    if (head == NULL) {
+    if (head == NULL)
+    {
       head = n;
-    } else {
+    }
+    else
+    {
       n->next = head;
       head = n;
     }
@@ -39,8 +45,10 @@ void Insert() {
     n->val = e;
     n->next = NULL;
     c = 0;
-    while (temp != NULL) {
-      if (c == p - 1) {
+    while (temp != NULL)
+    {
+      if (c == p - 1)
+      {
         n->next = temp->next;
         temp->next = n;
         std::cout << "\nInserted!!";
@@ -52,11 +60,15 @@ void Insert() {
   case 3:
     n->val = e;
     n->next = NULL;
-    if (head == NULL) {
+    if (head == NULL)
+    {
       head = n;
       std::cout << "\nInserted!!!";
-    } else {
-      while (temp->next != NULL) {
+    }
+    else
+    {
+      while (temp->next != NULL)
+      {
         temp = temp->next;
       }
       temp->next = n;
@@ -70,7 +82,8 @@ void Insert() {
   std::cout << std::endl;
 }
 
-void Delete() {
+void Delete()
+{
   int ch;
   int p;
   int c;
@@ -81,11 +94,15 @@ void Delete() {
   std::cout << "\n3.Delete From End.";
   std::cout << "\nEnter the choice: ";
   std::cin >> ch;
-  switch (ch) {
+  switch (ch)
+  {
   case 1:
-    if (head == NULL) {
+    if (head == NULL)
+    {
       std::cout << "\nUnderflow!!";
-    } else {
+    }
+    else
+    {
       temp = head;
       head = temp->next;
       delete (temp);
@@ -93,20 +110,24 @@ void Delete() {
     }
     break;
   case 2:
-    if (head == NULL) {
+    if (head == NULL)
+    {
       std::cout << "\nunderflow!!";
-    } else
+    }
+    else
       std::cout << "Enter the Position to Delete:";
     std::cin >> p;
     temp = head;
-    if (p == 0) {
+    if (p == 0)
+    {
       temp = head;
       head = temp->next;
       delete temp;
       std::cout << "\nDeleted!";
       break;
     }
-    for (int i = 0; temp != NULL && i < p - 1; i++) {
+    for (int i = 0; temp != NULL && i < p - 1; i++)
+    {
       temp = temp->next;
     }
     temp2 = temp->next->next;
@@ -114,16 +135,22 @@ void Delete() {
     temp->next = temp2;
     break;
   case 3:
-    if (head->next == NULL) {
+    if (head->next == NULL)
+    {
       temp = head;
       head = temp->next;
       delete temp;
       std::cout << "\nDeleted!!!";
-    } else if (head == NULL) {
+    }
+    else if (head == NULL)
+    {
       std::cout << "\nUnderflow!";
-    } else {
+    }
+    else
+    {
       temp = head;
-      while (temp->next->next != NULL) {
+      while (temp->next->next != NULL)
+      {
         temp = temp->next;
       }
       temp->next = NULL;
@@ -135,40 +162,51 @@ void Delete() {
   }
   std::cout << std::endl;
 }
-void search(int e) {
+void search(int e)
+{
   node *temp = head;
   int val = 0;
-  while (temp != NULL) {
-    if (temp->val == e) {
+  while (temp != NULL)
+  {
+    if (temp->val == e)
+    {
       val = temp->val;
     }
     temp = temp->next;
   }
-  if (val == e) {
+  if (val == e)
+  {
     std::cout << "\nElement " << e << " is present in List!";
-  } else {
+  }
+  else
+  {
     std::cout << "\nElement " << e << " not Found!!";
   }
   std::cout << std::endl;
 }
 
-void display() {
-  if (head == NULL) {
+void display()
+{
+  if (head == NULL)
+  {
     std::cout << "\nUnderflow!!";
   }
   node *temp = head;
-  while (temp != NULL) {
+  while (temp != NULL)
+  {
     std::cout << "[" << temp->val << "]->";
     temp = temp->next;
   }
   std::cout << "NULL";
   std::cout << std::endl;
 }
-int main() {
+int main()
+{
   int choice = 0;
   int x = 0;
 
-  do {
+  do
+  {
     std::cout << "====LINKED-LIST====";
     std::cout << "\n1.Insert";
     std::cout << "\n2.Delete";
@@ -178,7 +216,8 @@ int main() {
     std::cout << "\nEnter the Choice: ";
     std::cin >> choice;
 
-    switch (choice) {
+    switch (choice)
+    {
     case 1:
       Insert();
       break;
